@@ -1,5 +1,6 @@
 var map;
 var infowindow;
+var here;
 
 function pos() {
 	if (navigator.geolocation) {
@@ -9,7 +10,7 @@ function pos() {
 
 function initMap(p) {
 
-	var here = {lat: p.coords.latitude, lng: p.coords.longitude};
+	here = {lat: p.coords.latitude, lng: p.coords.longitude};
 	console.log(here);
 
 	map = new google.maps.Map(document.getElementById('map'), {
@@ -29,20 +30,26 @@ function callback(results, status) {
 	console.log(results);
 	if (status === google.maps.places.PlacesServiceStatus.OK) {
 		for (var i = 0; i < results.length; i++) {
+
+			var poi = results[i].geometry.location;
+			var dx = poi.lng()-here.lng;
+			var dy = poi.lat()-here.lat;
+			var angle = Math.atan2(dx,dy)*180/Math.PI;
+			results[i].angle = angle;
 			console.log(results[i]);
+
 			createMarker(results[i]);
 		}
 	}
 }
 
 function createMarker(place) {
-	var placeLoc = place.geometry.location;
 	var marker = new google.maps.Marker({
 		map: map,
 		position: place.geometry.location
 	});
 
 	google.maps.event.addListener(marker, 'click', function() {
-		console.log(place.name);
+		console.log(place.name,place.angle);
 	});
 }
