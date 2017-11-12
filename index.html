@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<!--
- *  Copyright (c) 2015 The WebRTC project authors. All Rights Reserved.
- *
- *  Use of this source code is governed by a BSD-style license
- *  that can be found in the LICENSE file in the root of the source
- *  tree.
--->
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <head>
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta id="theme-color" name="theme-color" content="#ffffff">
-	</script>
-	<script type="text/javascript" src="./js/script.js">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta id="theme-color" name="theme-color" content="#ffffff">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="js/gps.js"></script>
+	<script type="text/javascript" src="./js/script.js"></script>
+	<script type="text/javascript" src="./js/gps.js"></script>
+	<script type="text/javascript" src="./js/adapter-latest.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
@@ -28,26 +20,22 @@
 			<span id="supported"></span>
 		</div>
 	</div>
-</body>
+	<div id="container">
+		<video id="video" autoplay playsinline>
 
-  <div id="container">
-
-   
-
-   
-    <video id="gum-local" autoplay playsinline></video>
-
-  
-
-  <script src="js/main.js"></script>
-
-
+		</video>
+	</div>
 	<div id="mapContainer">
-		<div id="map"></div>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_432x79gFb1uhTYGjzOuSdbl_IFgd1Sw&libraries=places&callback=pos" async defer></script>
+		<div id="map">
+
+		</div>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_432x79gFb1uhTYGjzOuSdbl_IFgd1Sw&libraries=places&callback=pos"
+		 async defer></script>
 	</div>
 	<div id="infoContainer">
-		
 	</div>
 </body>
+
+<script type="text/javascript" src="./js/main.js"></script>
+
 </html>
