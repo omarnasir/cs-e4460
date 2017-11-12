@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 	count = 0;
 
 	if ('ondeviceorientationabsolute' in window) {
-		document.getElementById("supported").innerHTML = true;
+		// document.getElementById("supported").innerHTML = true;
 		window.addEventListener('deviceorientationabsolute', function (eventData) {
 			var heading = 0;
 			if (eventData.absolute === true && eventData.alpha !== null) {
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 		})
 	}
 	else if ('ondeviceorientation' in window) {
-		document.getElementById("supported").innerHTML = false;
+		// document.getElementById("supported").innerHTML = false;
 	}
 
 	function compassHeading(alpha, beta, gamma) {
