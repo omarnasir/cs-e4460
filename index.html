@@ -5,22 +5,17 @@
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 	<meta charset="utf-8">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="js/script.js"></script><!-- 
-	<link rel="stylesheet" type="text/css" href="css/style.css"> -->
-	<style>
-      #map {
-      	height: 100%;
-      }
-      html, body {
-      	height: 100%;
-      	margin: 0;
-      	padding: 0;
-      }
-  </style>
+	<script type="text/javascript" src="js/script.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 <body>
-	<div id="map"></div>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_432x79gFb1uhTYGjzOuSdbl_IFgd1Sw&libraries=places&callback=pos" async defer></script>
-
+	<div id="mapContainer">
+		<div id="map"></div>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_432x79gFb1uhTYGjzOuSdbl_IFgd1Sw&libraries=places&callback=pos" async defer></script>
+	</div>
+	<div id="infoContainer">
+		
+	</div>
 </body>
 </html>
