@@ -40,6 +40,7 @@ function callback(results, status) {
 
 			createMarker(results[i]);
 		}
+		filterPOIs(results,200);
 	}
 }
 
@@ -52,4 +53,15 @@ function createMarker(place) {
 	google.maps.event.addListener(marker, 'click', function() {
 		console.log(place.name,place.angle);
 	});
+}
+
+function filterPOIs(pois,direction){
+	var fov = 90;
+	for (var i = pois.length - 1; i >= 0; i--) {
+		var a = direction - pois[i].angle;
+		a = (a + 180) % 360 - 180;
+		if (a >-fov/2 & a<fov/2) {
+			$('#infoContainer').append('<tr><td>'+pois[i].name+'</td>'+'<td>'+pois[i].angle+'</td><td>'+a+'</td><td>'+pois[i].types+'</td></tr>');
+		}
+	}
 }
