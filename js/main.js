@@ -1,5 +1,28 @@
 //----Camera API
+
+var stats = new Stats();
+
+var start = performance.now();
+
+function animate() {
+
+	stats.begin();
+	stats.end();
+
+	requestAnimationFrame( animate );
+
+}
+
+
+//----Camera API
 $(document).ready(function () {
+
+
+	stats.showPanel( 1 ); // 0: fps, 1: ms, 2: mb, 3+: custom
+	document.body.appendChild( stats.dom );
+
+	requestAnimationFrame( animate );
+
   var video = document.querySelector('#video');
 
   // Put variables in global scope to make them available to the browser console.
@@ -131,6 +154,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
   count = 0;
 
   if ('ondeviceorientationabsolute' in window) {
+	window.lastOrientationEventReceived = Date.now();
+
     // document.getElementById("supported").innerHTML = true;
     window.addEventListener('deviceorientationabsolute', function (eventData) {
       var heading = 0;
@@ -148,6 +173,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
         visualization()
       }
       deviceOrientationHandler(heading);
+	  
+
+	  console.log("Time between orientation events", Date.now() - window.lastOrientationEventReceived);
+	  var test_value = Date.now() - window.lastOrientationEventReceived;
+	  window.lastOrientationEventReceived = Date.now();
+	  $('#test_value').text(test_value);
     })
   }
   else if ('ondeviceorientation' in window) {
