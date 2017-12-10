@@ -173,9 +173,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
         visualization()
       }
       deviceOrientationHandler(heading);
-	  
 
-	  console.log("Time between orientation events", Date.now() - window.lastOrientationEventReceived);
+	 $('#loadTime').text(performance.now() - start);
+
+	  //console.log("Time between orientation events", Date.now() - window.lastOrientationEventReceived);
 	  var test_value = Date.now() - window.lastOrientationEventReceived;
 	  window.lastOrientationEventReceived = Date.now();
 	  $('#test_value').text(test_value);
