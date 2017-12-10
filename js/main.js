@@ -1,9 +1,5 @@
 //----Camera API
 
-var stats = new Stats();
-
-var start = performance.now();
-
 function animate() {
 
 	stats.begin();
@@ -173,8 +169,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         visualization()
       }
       deviceOrientationHandler(heading);
-
-	 $('#loadTime').text(performance.now() - start);
 
 	  //console.log("Time between orientation events", Date.now() - window.lastOrientationEventReceived);
 	  var test_value = Date.now() - window.lastOrientationEventReceived;
