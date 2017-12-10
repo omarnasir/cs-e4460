@@ -1,6 +1,7 @@
-#mapContainer,
-#infoContainer{
-	height: 50%;
+.container{
+	margin: 0 !important;
+	overflow: hidden !important;
+	padding: 0 !important;
 }
 
 #map {
@@ -22,6 +23,8 @@ html, body {
 }
 #visual{
 	overflow: hidden;
+	height: 100%;
+	width: 100%;
 }
 
 .hide{
@@ -30,4 +33,7 @@ html, body {
 
 .tooltip_name{
 	white-space: nowrap;
+	background-color: white;
+	padding: 1px;
+	border-radius: 2px;
 }

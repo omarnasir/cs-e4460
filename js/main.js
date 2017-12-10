@@ -1,11 +1,15 @@
 //----Camera API
+
 var stats = new Stats();
+
+var start = performance.now();
+
 function animate() {
 
   stats.begin();
-	stats.end();
+  stats.end();
 
-	requestAnimationFrame( animate );
+  requestAnimationFrame( animate );
 
 }
 
@@ -14,18 +18,18 @@ function animate() {
 $(document).ready(function () {
 
 
-	stats.showPanel( 1 ); // 0: fps, 1: ms, 2: mb, 3+: custom
-	document.body.appendChild( stats.dom );
+  stats.showPanel( 1 ); // 0: fps, 1: ms, 2: mb, 3+: custom
+  document.body.appendChild( stats.dom );
 
-	requestAnimationFrame( animate );
+  requestAnimationFrame( animate );
 
   var video = document.querySelector('#video');
 
   // Put variables in global scope to make them available to the browser console.
   var constraints = window.constraints = {
     audio: false,
-    video: true
-    // video: { facingMode: { exact: "environment" } }
+    // video: true
+    video: { facingMode: { exact: "environment" } }
   };
 
   function handleSuccess(stream) {
@@ -114,9 +118,9 @@ function createMarker(place) {
 
 
 function filterPOIs(direction) {
-  var fov = 90;
+  // var fov = 90;
   // $('#infoContainer').clear();
-  $('#infoContainer').empty();
+  // $('#infoContainer').empty();
   for (var i = results_pois.length - 1; i >= 0; i--) {
     var a = direction - results_pois[i].angle;
     results_pois[i].facing = (a + 180) % 360 - 180;
@@ -146,11 +150,16 @@ function visualization(){
 }
 
 //------Compass API
+
+
+
+refresh_rate = [];
+
 document.addEventListener("DOMContentLoaded", function (event) {
   count = 0;
 
   if ('ondeviceorientationabsolute' in window) {
-	window.lastOrientationEventReceived = Date.now();
+  window.lastOrientationEventReceived = Date.now();
 
     // document.getElementById("supported").innerHTML = true;
     window.addEventListener('deviceorientationabsolute', function (eventData) {
@@ -168,12 +177,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
         //Do visualization updates here
         visualization()
       }
-      deviceOrientationHandler(heading);
+      // deviceOrientationHandler(heading);
 
-	  //console.log("Time between orientation events", Date.now() - window.lastOrientationEventReceived);
-	  var test_value = Date.now() - window.lastOrientationEventReceived;
-	  window.lastOrientationEventReceived = Date.now();
-	  $('#test_value').text(test_value);
+    //console.log("Time between orientation events", Date.now() - window.lastOrientationEventReceived);
+    var test_value = Date.now() - window.lastOrientationEventReceived;
+    window.lastOrientationEventReceived = Date.now();
+    // $('#rate').append('<p>'+test_value+'</p>');
+    refresh_rate.push(test_value);
     })
   }
   else if ('ondeviceorientation' in window) {
@@ -217,9 +227,5 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   }
 
-  function deviceOrientationHandler(res, alpha) {
-    document.getElementById("heading").innerHTML = Math.ceil(res);
-
-  }
 });
 

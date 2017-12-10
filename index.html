@@ -14,21 +14,9 @@
 
 <body>
 	<div class="container">
-		<div class="card" id="visual">
+		<div id="visual">
 			<video id="video" autoplay playsinline>
 			</video>
-
-		</div>
-		<div class="card-body">
-			<div class="card-title text-center">
-				<h4>The current compass heading is: </h4>
-				<h4 id="heading"></h4>
-				<h4>test value is:<span id="test_value" /></h4>
-				
-			</div>
-			<!-- <div>
-				<p id="supported" class="card-text"></p>
-			</div> -->
 		</div>
 		<div id="mapContainer" style="display:none">
 			<div id="map">
@@ -37,17 +25,6 @@
 			 async defer></script>
 		</div>
 		<table class="table">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Bearing</th>
-					<th>Some Angle</th>
-					<th>Type</th>
-				</tr>
-			</thead>
-			<tbody id="infoContainer">
-			</tbody>
-		</table>
 		<table class="table">
 			<thead>
 				<tr>
@@ -60,6 +37,7 @@
 			<tbody id="benchmark">
 			</tbody>
 		</table>
+		<div id="rate"></div>
 	</div>
 </body>
 
