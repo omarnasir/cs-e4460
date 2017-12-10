@@ -1,5 +1,5 @@
 //----Camera API
-
+var stats = new Stats();
 function animate() {
 
 	stats.begin();
