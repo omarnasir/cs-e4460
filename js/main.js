@@ -2,7 +2,7 @@
 var stats = new Stats();
 function animate() {
 
-	stats.begin();
+  stats.begin();
 	stats.end();
 
 	requestAnimationFrame( animate );
